@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Виготовлення ключів 777 - Послуги</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        .nav-links a.nav-item {
+            position: relative;
+            padding: 0.5rem 1rem;
+            background-color: #fff3cd;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        .nav-links a.nav-item.active {
+            background-color: #ffc107;
+            color: #000;
+            font-weight: bold;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+        .nav-links a.nav-item:hover {
+            background-color: #ffe082;
+        }
+        .service-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .service-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .service-panel {
+            display: none;
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.6s ease-in-out;
+        }
+        .service-panel.active {
+            display: block;
+        }
+        @keyframes slideUp {
+            0% { transform: translateY(30px); opacity: 0; }
+            50% { transform: translateY(-5px); opacity: 0.5; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .service-card {
+                padding: 1rem;
+            }
+            .services-grid > :last-child {
+                max-width: 100%;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                padding: 1rem;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                transform: translateY(-100%);
+                transition: transform 0.4s ease-in-out, opacity 0.3s ease;
+                opacity: 0;
+                z-index: 1000;
+            }
+            .nav-links.active {
+                display: flex;
+                transform: translateY(0);
+                opacity: 1;
+                animation: slideDown 0.4s ease-out;
+            }
+            .nav-toggle {
+                display: block;
+                font-size: 1.8rem;
+                background-color: #333;
+                color: #ffc107;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                padding: 0.5rem 1rem;
+                z-index: 1010;
+                transition: transform 0.3s ease, background-color 0.3s ease;
+            }
+            .nav-toggle:hover {
+                transform: scale(1.1);
+                background-color: #4d4d4d;
+            }
+            .nav-links a.nav-item {
+                margin: 0.75rem 0;
+                width: 100%;
+                text-align: center;
+                font-size: 1.1rem;
+                transition: background-color 0.3s ease;
+            }
+            .nav-links a.nav-item:hover {
+                background-color: #ffe082;
+            }
+        }
+        @media (min-width: 769px) {
+            .nav-toggle {
+                display: none;
+            }
+        }
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .loader-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ffc107;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        .loader-text {
+            position: absolute;
+            color: #ffc107;
+            font-size: 1.5rem;
+            font-weight: bold;
+            top: 60%;
+            transform: translateY(-50%);
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="services">
+    <div class="loader">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">777</div>
+    </div>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo" style="z-index: 1010;">777</a>
+            <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-item">Головна</a></li>
+                <li><a href="services.html" class="nav-item">Послуги</a></li>
+                <li><a href="assortment.html" class="nav-item">Асортимент</a></li>
+                <li><a href="about.html" class="nav-item">Про нас</a></li>
+                <li><a href="contacts.html" class="nav-item">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container">
+            <div style="text-align: center;">
+                <h1>🔧 Послуги які надає наша майстерня:</h1>
+            </div>
+            <div class="service-buttons">
+                <button class="service-btn" onclick="togglePanel('key-making')">Виготовлення ключів</button>
+                <div id="key-making-panel" class="service-panel">
+                    <h3>Виготовлення ключів</h3>
+                    <p>Дверні (квартирні, офісні, гаражні) — від 90₴<br>Автомобільні (механічні) — від 400₴<br>Поштові, меблеві, сейфові — від 90₴</p>
+                </div>
+
+                <button class="service-btn" onclick="togglePanel('knife-sharpening')">Заточка ножів</button>
+                <div id="knife-sharpening-panel" class="service-panel">
+                    <h3>Заточка ножів</h3>
+                    <p>Кухонні ножі — від 50₴<br>Побутові та складні ножі — від 50₴<br>Ножиці (за запитом) — від 50₴</p>
+                </div>
+
+                <button class="service-btn" onclick="togglePanel('sales')">Продаж</button>
+                <div id="sales-panel" class="service-panel">
+                    <h3>Продаж</h3>
+                    <p>Заготовки ключів — від Х₴<br>Брелоки — від 50₴<br>Кільця, наліпки — від 5₴</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Виготовлення ключів 777. Усі права захищено.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const loader = document.querySelector('.loader');
+            document.body.classList.add("loaded");
+            setTimeout(() => loader.style.display = 'none', 500);
+
+            const currentPage = window.location.pathname.split("/").pop();
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+
+        document.querySelectorAll('a[href$=".html"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                const loader = document.querySelector('.loader');
+                loader.style.display = 'flex';
+                document.body.classList.remove('loaded');
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 500);
+            });
+        });
+
+        function togglePanel(panelId) {
+            const panel = document.getElementById(`${panelId}-panel`);
+            if (panel.classList.contains('active')) {
+                panel.classList.remove('active');
+            } else {
+                document.querySelectorAll('.service-panel').forEach(p => p.classList.remove('active'));
+                panel.classList.add('active');
+            }
+        }
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

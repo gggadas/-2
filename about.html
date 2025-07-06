@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Про нас - Виготовлення ключів 777</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    body {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    body.loaded {
+      opacity: 1;
+    }
+    .nav-links a.nav-item {
+      position: relative;
+      padding: 0.5rem 1rem;
+      background-color: #fff3cd;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+    .nav-links a.nav-item.active {
+      background-color: #ffc107;
+      color: #000;
+      font-weight: bold;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      transform: scale(1.05);
+    }
+    .nav-links a.nav-item:hover {
+      background-color: #ffe082;
+    }
+    .text-frame {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .text-frame h2, .text-frame h3 {
+      color: #ffc107;
+    }
+    .text-frame ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .text-frame ul p {
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    .text-frame ul p:before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #ffc107;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transform: translateY(-100%);
+        transition: transform 0.4s ease-in-out, opacity 0.3s ease;
+        opacity: 0;
+        z-index: 1000;
+      }
+      .nav-links.active {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+        animation: slideDown 0.4s ease-out;
+      }
+      .nav-toggle {
+        display: block;
+        font-size: 1.8rem;
+        background-color: #333;
+        color: #ffc107;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        z-index: 1010;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
+      .nav-toggle:hover {
+        transform: scale(1.1);
+        background-color: #4d4d4d;
+      }
+      .nav-links a.nav-item {
+        margin: 0.75rem 0;
+        width: 100%;
+        text-align: center;
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease;
+      }
+      .nav-links a.nav-item:hover {
+        background-color: #ffe082;
+      }
+      .text-frame {
+        margin: 1rem;
+        padding: 0.5rem;
+      }
+    }
+    @media (min-width: 769px) {
+      .nav-toggle {
+        display: none;
+      }
+    }
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .loader-spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #ffc107;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    .loader-text {
+      position: absolute;
+      color: #ffc107;
+      font-size: 1.5rem;
+      font-weight: bold;
+      top: 60%;
+      transform: translateY(-50%);
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes slideDown {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body class="about">
+  <div class="loader">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">777</div>
+  </div>
+
+  <header>
+    <nav>
+      <a href="index.html" class="logo" style="z-index: 1010;">777</a>
+      <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-item">Головна</a></li>
+        <li><a href="services.html" class="nav-item">Послуги</a></li>
+        <li><a href="assortment.html" class="nav-item">Асортимент</a></li>
+        <li><a href="about.html" class="nav-item">Про нас</a></li>
+        <li><a href="contacts.html" class="nav-item">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container">
+      <div class="text-frame">
+        <h2>🔑 Про нашу майстерню</h2>
+        <h3>🔑 Майстерня "Виготовлення ключів 777"</h3>
+        <p>Потрібен новий ключ? Зламався старий? Годинник зупинився, а в авто-пульті сіла батарейка? Завітай до нас — і ми все вирішимо!</p>
+        <p>Наш майстер виготовить для тебе побутові, спеціалізовані, домофонні чи навіть автомобільні ключі — швидко, точно й надійно. Замінить елементи живлення в авто-пультах і годинниках, заточить ножі до ідеального стану, підбере потрібну заготовку або стильний брелок до ключів.</p>
+        <p>У нас ти знайдеш усе необхідне:</p>
+        <ul>
+          <p> - заготовки ключів</p>
+          <p> - брелоки, чохли, корпуси</p>
+          <p> - ключниці, кільця</p>
+          <p> - батарейки до годинників і не тільки</p>
+          <p> - та багато інших корисних дрібниць</p>
+        </ul>
+        <p>Майстерня "Виготовлення ключів 777" — це не просто сервіс, це місце, де кожен ключ має значення. Ми працюємо з любов’ю до справи, дбайливо ставимося до кожного замовлення й завжди готові допомогти підібрати найкраще рішення саме для тебе.</p>
+        <p>Завітай — не відкладаючи! 🔧✨</p>
+        <p>Наша мета — безпечні домівки та комфорт кожного клієнта.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Виготовлення ключів 777. Усі права захищено.</p>
+  </footer>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const loader = document.querySelector('.loader');
+      document.body.classList.add("loaded");
+      setTimeout(() => loader.style.display = 'none', 500);
+
+      const current = window.location.pathname.split("/").pop();
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        if (link.getAttribute("href") === current) link.classList.add("active");
+      });
+    });
+
+    document.querySelectorAll('a[href$=".html"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        const loader = document.querySelector('.loader');
+        loader.style.display = 'flex';
+        document.body.classList.remove('loaded');
+        setTimeout(() => window.location.href = href, 500);
+      });
+    });
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Асортимент - Виготовлення ключів 777</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    body.loaded {
+      opacity: 1;
+    }
+    .nav-links a.nav-item {
+      position: relative;
+      padding: 0.5rem 1rem;
+      background-color: #fff3cd;
+      border-radius: 6px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+    .nav-links a.nav-item.active {
+      background-color: #ffc107;
+      color: #000;
+      font-weight: bold;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      transform: scale(1.05);
+    }
+    .nav-links a.nav-item:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      background-color: #ffe082;
+    }
+    .assortment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .assortment-card {
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .assortment-card:hover {
+      transform: translateY(-5px);
+    }
+    .placeholder-image {
+      width: 100%;
+      height: 150px;
+      background-color: #f0f0f0;
+      border: 1px dashed #ccc;
+      margin-bottom: 1rem;
+    }
+    .filters-wrapper {
+      margin: 1rem 0;
+      padding: 1rem;
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    #categoryFilter, #searchInput {
+      padding: 0.5rem 1rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    #categoryFilter:focus, #searchInput:focus {
+      outline: none;
+      border-color: #ffc107;
+      box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+    }
+    #searchInput {
+      background-color: #fff;
+      width: 200px;
+    }
+    .pagination {
+      margin: 1rem 0;
+      text-align: center;
+    }
+    .pagination button {
+      padding: 0.5rem 1rem;
+      margin: 0 0.25rem;
+      background-color: #fff3cd;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .pagination button:hover {
+      background-color: #ffe082;
+    }
+    .pagination button.active {
+      background-color: #ffc107;
+      color: #000;
+      font-weight: bold;
+    }
+    .assortment-card h3 {
+      margin: 0.5rem 0;
+      padding: 0.25rem 0.75rem;
+      background-color: #ffc107;
+      color: #000;
+      border-radius: 6px;
+      display: inline-block;
+      font-weight: 500;
+    }
+    @media (max-width: 768px) {
+      .assortment-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .filters-wrapper {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      #searchInput {
+        width: 100%;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transform: translateY(-100%);
+        transition: transform 0.4s ease-in-out, opacity 0.3s ease;
+        opacity: 0;
+        z-index: 1000;
+      }
+      .nav-links.active {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+        animation: slideDown 0.4s ease-out;
+      }
+      .nav-toggle {
+        display: block;
+        font-size: 1.8rem;
+        background-color: #333;
+        color: #ffc107;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        z-index: 1010;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
+      .nav-toggle:hover {
+        transform: scale(1.1);
+        background-color: #4d4d4d;
+      }
+      .nav-links a.nav-item {
+        margin: 0.75rem 0;
+        width: 100%;
+        text-align: center;
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease;
+      }
+      .nav-links a.nav-item:hover {
+        background-color: #ffe082;
+      }
+    }
+    @media (min-width: 769px) {
+      .nav-toggle {
+        display: none;
+      }
+    }
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .loader-spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #ffc107;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    .loader-text {
+      position: absolute;
+      color: #ffc107;
+      font-size: 1.5rem;
+      font-weight: bold;
+      top: 60%;
+      transform: translateY(-50%);
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes slideDown {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body class="assortment">
+  <div class="loader">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">777</div>
+  </div>
+
+  <header>
+    <nav>
+      <a href="index.html" class="logo" style="z-index: 1010;">777</a>
+      <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-item">Головна</a></li>
+        <li><a href="services.html" class="nav-item">Послуги</a></li>
+        <li><a href="assortment.html" class="nav-item">Асортимент</a></li>
+        <li><a href="about.html" class="nav-item">Про нас</a></li>
+        <li><a href="contacts.html" class="nav-item">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container">
+      <div class="filters-wrapper">
+        <select id="categoryFilter" onchange="filterItems()">
+          <option value="">Усі категорії</option>
+          <option value="keys">Ключі</option>
+          <option value="keychains">Брелоки</option>
+          <option value="accessories">Аксесуари</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="Пошук за назвою" oninput="filterItems()">
+      </div>
+      <div id="assortmentGrid" class="assortment-grid"></div>
+      <div class="pagination" id="pagination"></div>
+    </section>
+  </main>
+
+  <div class="phone-widget" onclick="openPhoneWidget()">
+    <span>📞 +380 123 456 789</span>
+  </div>
+
+  <footer>
+    <p>© 2025 Виготовлення ключів 777. Усі права захищено.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const loader = document.querySelector('.loader');
+      document.body.classList.add("loaded");
+      setTimeout(() => loader.style.display = 'none', 500);
+
+      // Обновляем активное состояние навигации при загрузке
+      updateActiveNav();
+      loadAssortment();
+    });
+
+    document.querySelectorAll('a[href$=".html"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        const loader = document.querySelector('.loader');
+        loader.style.display = 'flex';
+        document.body.classList.remove('loaded');
+        setTimeout(() => window.location.href = href, 500);
+      });
+    });
+
+    function openPhoneWidget() {
+      alert("Зателефонуйте нам: +380 123 456 789");
+    }
+
+    const originalItems = [
+      { id: 1, name: "Заготовка ключа стандартна", category: "keys", image: "" },
+      { id: 2, name: "Заготовка ключа автомобільна", category: "keys", image: "" },
+      { id: 3, name: "Брелок металевий", category: "keychains", image: "" },
+      { id: 4, name: "Брелок шкіряний", category: "keychains", image: "" },
+      { id: 5, name: "Ключниця мала", category: "accessories", image: "" },
+      { id: 6, name: "Кільце для ключів", category: "accessories", image: "" },
+      { id: 7, name: "Заготовка ключа домофонна", category: "keys", image: "" },
+      { id: 8, name: "Брелок з гравіюванням", category: "keychains", image: "" },
+      { id: 9, name: "Чохол для ключів", category: "accessories", image: "" },
+      { id: 10, name: "Ключ спеціальний", category: "keys", image: "" },
+      { id: 11, name: "Брелок дерев’яний", category: "keychains", image: "" },
+      { id: 12, name: "Аксесуар для ключниці", category: "accessories", image: "" }
+    ];
+
+    let items = [...originalItems];
+    let currentPage = 1;
+    const itemsPerPage = 9;
+
+    function loadAssortment() {
+      const grid = document.getElementById('assortmentGrid');
+      grid.innerHTML = '';
+      const start = (currentPage - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      const paginatedItems = items.slice(start, end);
+
+      paginatedItems.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'assortment-card';
+        card.innerHTML = `
+          <div class="placeholder-image"></div>
+          <h3>${item.name}</h3>
+        `;
+        grid.appendChild(card);
+      });
+
+      updatePagination();
+    }
+
+    function updatePagination() {
+      const totalPages = Math.ceil(items.length / itemsPerPage);
+      const pagination = document.getElementById('pagination');
+      pagination.innerHTML = '';
+
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.onclick = () => {
+          currentPage = i;
+          loadAssortment();
+          document.querySelectorAll('.pagination button').forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          // Обновляем активное состояние навигации
+          updateActiveNav();
+        };
+        if (i === currentPage) button.classList.add('active');
+        pagination.appendChild(button);
+      }
+    }
+
+    function filterItems() {
+      const category = document.getElementById('categoryFilter').value;
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+      items = [...originalItems];
+      const filteredItems = items.filter(item => {
+        const matchesCategory = !category || item.category === category;
+        const matchesSearch = !searchTerm || item.name.toLowerCase().includes(searchTerm);
+        return matchesCategory && matchesSearch;
+      });
+
+      items = filteredItems;
+      currentPage = 1;
+      loadAssortment();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
