@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Виготовлення ключів 777 - якісні ключі, замки та аксесуари. Швидке обслуговування та доступні ціни в Україні." />
+  <meta name="keywords" content="виготовлення ключів, ремонт замків, брелоки, ключниці, Україна" />
+  <meta name="author" content="Виготовлення ключів 777" />
+  <title>Головна - Виготовлення ключів 777</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      overflow: hidden;
+    }
+    body.loaded {
+      opacity: 1;
+      overflow: auto;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a.nav-item {
+      position: relative;
+      padding: 0.5rem 1rem;
+      background-color: #fff3cd;
+      border-radius: 6px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      text-decoration: none;
+      color: #000;
+    }
+    .nav-links a.nav-item.active {
+      background-color: #ffc107;
+      color: #000;
+      font-weight: bold;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      transform: scale(1.05);
+    }
+    .nav-links a.nav-item:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      background-color: #ffe082;
+    }
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: linear-gradient(to bottom, #ffc107, #fff);
+      margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      background-color: #ffc107;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      background-color: #e0a800;
+    }
+    .btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .service-card {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: scale(1.05); /* Зміна: додав scale замість translateY */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .service-card h3 {
+      color: #ffc107;
+      margin-bottom: 0.5rem;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .services-grid {
+      justify-content: center;
+    }
+    .services-grid > :last-child {
+      grid-column: 1 / -1;
+      justify-self: center;
+      max-width: 300px;
+    }
+    .reviews-section {
+      padding: 2rem 1rem;
+      background-color: #f9f9f9;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .review-card {
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 1rem auto;
+      max-width: 400px;
+    }
+    .review-form {
+      max-width: 500px;
+      margin: 1rem auto;
+      padding: 1rem;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .review-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    .review-form input,
+    .review-form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      resize: vertical; /* Додано: дозволяє вертикальне розтягування */
+      max-height: 200px; /* Додано: обмеження висоти */
+    }
+    .review-form button {
+      background-color: #ffc107;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .review-form button:hover {
+      transform: scale(1.05);
+      background-color: #e0a800;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .service-card {
+        padding: 1rem;
+      }
+      .services-grid > :last-child {
+        max-width: 100%;
+      }
+      .nav-links {
+        display: none;
+      }
+      .nav-toggle {
+        display: block;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #000;
+        padding: 0.5rem;
+      }
+      .nav-active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .nav-active a.nav-item {
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+      }
+    }
+    @media (min-width: 769px) {
+      .nav-toggle {
+        display: none;
+      }
+    }
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .loader-spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #ffc107;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    .loader-text {
+      position: absolute;
+      color: #ffc107;
+      font-size: 1.5rem;
+      font-weight: bold;
+      top: 60%;
+      transform: translateY(-50%);
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="index">
+  <div class="loader">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">777</div>
+  </div>
+
+  <header>
+    <nav>
+      <a href="index.html" class="logo">777</a>
+      <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-item">Головна</a></li>
+        <li><a href="services.html" class="nav-item">Послуги</a></li>
+        <li><a href="assortment.html" class="nav-item">Асортимент</a></li>
+        <li><a href="about.html" class="nav-item">Про нас</a></li>
+        <li><a href="contacts.html" class="nav-item">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container">
+      <div class="hero">
+        <h1>Виготовлення ключів 777</h1>
+        <p>Якісні ключі та аксесуари для вашого комфорту</p>
+        <a href="assortment.html" class="btn">Дізнатися більше</a>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <h3>Виготовлення ключів</h3>
+          <p>Швидке та якісне створення ключів будь-якого типу.</p>
+        </div>
+        <div class="service-card fade-in">
+          <h3>Ремонт замків</h3>
+          <p>Професійний ремонт замків за доступними цінами.</p>
+        </div>
+        <div class="service-card fade-in">
+          <h3>Аксесуари</h3>
+          <p>Брелоки та ключниці для зручного зберігання.</p>
+        </div>
+        <div class="service-card fade-in">
+          <h3>Екстрена допомога</h3>
+          <p>Відкриття замків у будь-який час.</p>
+        </div>
+        <div class="service-card fade-in">
+          <h3>Консультація</h3>
+          <p>Безкоштовна консультація з фахівцями.</p>
+        </div>
+      </div>
+      <div class="reviews-section">
+        <h2>Відгуки клієнтів</h2>
+        <div class="review-card fade-in">
+          <p>"Швидко і професійно зробили ключ! Дякую!" - Іван К.</p>
+        </div>
+        <div class="review-card fade-in">
+          <p>"Відмінна якість брелоків, рекомендую!" - Марія С.</p>
+        </div>
+        <div class="review-form">
+          <h3>Залиште свій відгук</h3>
+          <form id="reviewForm">
+            <label for="name">Ім’я:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="review">Відгук:</label>
+            <textarea id="review" name="review" rows="4" required></textarea>
+            <button type="submit">Надіслати</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="phone-widget" onclick="openPhoneWidget()">
+    <span>📞 +380 123 456 789</span>
+  </div>
+
+  <footer>
+    <p>© 2025 Виготовлення ключів 777. Усі права захищено.</p>
+  </footer>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const loader = document.querySelector('.loader');
+      document.body.classList.add("loaded");
+      setTimeout(() => loader.style.display = 'none', 500);
+
+      // Активність для "Головна" і інших сторінок
+      const current = window.location.pathname.split("/").pop();
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        if (link.getAttribute("href") === current) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    });
+
+    // Виправлення переходу для кнопки "Дізнатися більше"
+    document.querySelectorAll('a[href$=".html"]').forEach(link => {
+      if (link.getAttribute('href') !== 'assortment.html') {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          const loader = document.querySelector('.loader');
+          loader.style.display = 'flex';
+          document.body.classList.remove('loaded');
+          setTimeout(() => window.location.href = href, 500);
+        });
+      }
+    });
+
+    function openPhoneWidget() {
+      alert("Зателефонуйте нам: +380 123 456 789");
+    }
+
+    function observeFadeIns() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in').forEach(element => {
+        observer.observe(element);
+      });
+    }
+    observeFadeIns();
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('nav-active');
+    }
+
+    // Обробка форми відгуків
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const review = document.getElementById('review').value;
+      const reviewCard = document.createElement('div');
+      reviewCard.className = 'review-card fade-in';
+      reviewCard.innerHTML = `<p>"${review}" - ${name}</p>`;
+      document.querySelector('.reviews-section').insertBefore(reviewCard, this.parentElement);
+      this.reset(); // Очищаємо форму
+      alert('Дякуємо за ваш відгук!');
+    });
+  </script>
+</body>
+</html>
